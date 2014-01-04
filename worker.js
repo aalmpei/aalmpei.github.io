@@ -28,5 +28,5 @@
 
     addEventListener('message', msgHandler, false);
 
-    postMessage('Loaded');
+    postMessage('');
 })();
