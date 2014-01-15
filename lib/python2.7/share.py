@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 "module for distant string sharing"
 from _socket import urlopen
+import json
 
 def urlencode(d):
         return '&'.join(['%s=%s'%(k,v) for (k,v) in d.items()])
@@ -31,7 +32,8 @@ class Session(object):
     @property
     def __dict__(self):
         data = urlopen(self.url_base+'/list')
-        if len(data):
+        if data and len(data):
           return json.loads(data)
+	else: return {}
     def __dir__(self):return self.__dict__.keys()
     def __contains__(self,var): return var in self.__dict__
